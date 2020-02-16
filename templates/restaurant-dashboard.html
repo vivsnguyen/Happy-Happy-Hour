@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-6">
+                        <div id="flash-messages">
+                            {% with messages = get_flashed_messages() %}
+                              {% if messages %}
+                                {% for message in messages %}
+                                  <p>{{ message }}</p>
+                                {% endfor %}
+                              {% endif %}
+                            {% endwith %}
+                        </div>
+                        <h1 id="welcome">
+                            Welcome {{ restaurant.name }}
+                        </h1>
+                        <h2 id="current">Your Current Offer</h2>
+                        {% if not offers %}
+                            <p>You don't have any offers yet.</p>
+                        {% endif %}
+                        {% if offers %}
+                            {% for offer in offers %}
+                                <div id="offer-{{ offer.id }}">
+                                    <h4>{{ offer.item }}</h4>
+                                    <button type="submit" class="btn btn-primary delete-offer-btn" data-offer-id="{{ offer.id }}">Delete</button>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+{% if not offers %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <h2 id="add-new-offer">Add a New Offer</h2>
+            <form id="add-offer-form" action="/restaurant-dashboard/{{ restaurant.id }}/add-offer", method="POST">
+                <div class="form-group">
+                    <label for="item">Describe item, quantity, price, dates, and times:</label>
+                    <input type="textarea" required class="form-control" name="item">
+                </div>
+                <button type="submit" class="btn btn-primary">Add Offer</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+{% block script %}
+    <script src="/static/js/restaurant-dashboard.js"></script>
+{% endblock %}
+
