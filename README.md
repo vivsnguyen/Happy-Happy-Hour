@@ -1,6 +1,8 @@
 # Happy-Happy-Hour
 DeveloperWeek2020 Hackathon - using TomTom API to prevent food waste
 
+https://devpost.com/software/happy-happy-hour-74ypbj
+
 # <img src="https://github.com/vivsnguyen/Happy-Happy-Hour/blob/master/images/original.png" width="100%" alt="Happy Happy Hour">
 
 Happy Happy Hour is just like a normal happy hour, but with the added benefit of reducing food waste from local businesses! Businesses can post a date, time, location, and deal for what would normally go to waste (ex. not-as-fresh bagels are 50% off), and users can enjoy saving money and the planet.
