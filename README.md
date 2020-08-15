@@ -1,4 +1,6 @@
 # Happy-Happy-Hour
+https://happyhappy-hour.herokuapp.com/
+
 DeveloperWeek2020 Hackathon - using TomTom API to prevent food waste
 
 https://devpost.com/software/happy-happy-hour-74ypbj
