@@ -1,5 +1,5 @@
 # Happy-Happy-Hour
-https://happyhappy-hour.herokuapp.com/
+Try it out here: https://happyhappy-hour.herokuapp.com/
 
 DeveloperWeek2020 Hackathon - using TomTom API to prevent food waste
 
