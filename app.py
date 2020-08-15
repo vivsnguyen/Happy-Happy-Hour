@@ -1,7 +1,9 @@
 from jinja2 import StrictUndefined
 
 from flask import Flask, render_template, request, flash, redirect, session, jsonify
-from sqlalchemy import desc
+from sqlalchemy import desc, create_engine
+
+from config import Config
 
 from datetime import datetime
 import os
@@ -12,13 +14,14 @@ from model import connect_to_db, db, Restaurant, Offer
 
 import requests
 
-
 app = Flask(__name__)
+app.config.from_object(Config)
 app.secret_key = "b_xd3xf9095~xa68x90E^O1xd3R"
 
+DB_URI = app.config['SQLALCHEMY_DATABASE_URI']
+engine = create_engine(DB_URI)
+
 app.jinja_env.undefined = StrictUndefined
-
-
 
 @app.route("/", methods=["GET"])
 def index():
