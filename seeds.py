@@ -1,5 +1,5 @@
 from model import connect_to_db, db, Restaurant, Offer
-from server import app
+from app import app
 
 
 def kaboom():
@@ -18,9 +18,9 @@ def load_restaurants():
     # Read restaurants.txt file and insert data
     for row in open("seed_data/restaurants.txt"):
         row = row.rstrip()
-        name, street_address, city, state, zipcode, email, password = row.split("|")
+        id, name, street_address, city, state, zipcode, email, password = row.split("|")
 
-        restaurant = Restaurant(name=name,
+        restaurant = Restaurant(id=id, name=name,
                      street_address=street_address,
                      city=city,
                      state=state,
@@ -37,24 +37,22 @@ def load_restaurants():
     db.session.commit()
 
 
-# def load_offers():
-#     """Load posts from offers.txt into database."""
+def load_offers():
+    """Load posts from offers.txt into database."""
 
-#     print("Offers")
+    print("Offers")
 
-#     # Read offers.txt file and insert data
-#     for row in open("seed_data/offers.txt"):
-#         row = row.rstrip()
-#         restaurant_id, item = row.split("|")
+    for row in open("seed_data/offers.txt"):
+        row = row.rstrip()
+        restaurant_id, item = row.split("|")
 
-#         offer = Offer(restaurant_id=restaurant_id,
-#                       item=item)
+        offer = Offer(restaurant_id=restaurant_id,
+                      item=item)
 
-#         # We need to add to the session or it won't ever be stored
-#         db.session.add(offer)
+        
+        db.session.add(offer)
 
-#     # Once we're done, we should commit our work
-#     db.session.commit()
+    db.session.commit()
 
 
 if __name__ == "__main__":
@@ -66,4 +64,4 @@ if __name__ == "__main__":
 
     # Import different types of data
     load_restaurants()
-    # load_offers()
+    load_offers()
