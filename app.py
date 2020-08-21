@@ -15,6 +15,7 @@ from model import connect_to_db, db, Restaurant, Offer
 import requests
 
 app = Flask(__name__)
+connect_to_db(app)
 app.config.from_object(Config)
 app.secret_key = "b_xd3xf9095~xa68x90E^O1xd3R"
 
